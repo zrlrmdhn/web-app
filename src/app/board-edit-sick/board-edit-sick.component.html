@@ -1,0 +1,102 @@
+<div class="container">
+  <section class="atas">
+    <h3 class="text-center" style="margin-top: 30px">
+      Edit Formulir Izin Sakit
+    </h3>
+    <hr />
+    <div class="sick-form" *ngIf="this.content !== undefined">
+      <form [formGroup]="form" (ngSubmit)="updateHistory(id)">
+        <!-- TANGGAL -->
+        <div class="form-group">
+          <label class="form-label" for="date">Tanggal</label>
+          <div class="input-group mb-2">
+            <input
+              ngbDatepicker
+              #d="ngbDatepicker"
+              type="text"
+              placeholder="YYYY-MM-DD"
+              class="form-control"
+              formControlName="date"
+              [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+            />
+            <button
+              class="btn btn-outline-primary calendar"
+              (click)="d.toggle()"
+              type="button"
+            >
+              <i class="bi bi-calendar3"></i>
+            </button>
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="submitted && f.date.errors"
+            style="font-size: small"
+          >
+            <strong>Warning!</strong> Masukan tanggal terlebih dahulu
+          </div>
+        </div>
+        <!-- KETERANGAN -->
+        <div class="form-group">
+          <label for="description">Keterangan</label>
+          <div class="input-group mb-2">
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              formControlName="description"
+              [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+            ></textarea>
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="submitted && f.description.errors"
+            style="font-size: small"
+          >
+            <strong>Warning!</strong> Masukan keterangan terlebih dahulu
+          </div>
+        </div>
+        <!-- FOTO -->
+        <div class="form-group">
+          <label for="image">Foto</label>
+          <div class="input-group mb-2">
+            <input
+              class="form-control"
+              type="file"
+              (change)="onChange($event)"
+              formControlName="image"
+              [ngClass]="{ 'is-invalid': submitted && f.image.errors }"
+            />
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="submitted && f.image.errors"
+            style="font-size: small"
+          >
+            <strong>Warning!</strong> Masukan gambar terlebih dahulu
+          </div>
+          <center>
+            <a href="{{ content.image }}"
+              ><img src="{{ fileString ? fileString : content.image }}"
+            /></a>
+          </center>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-sm mb-3">
+            Simpan
+          </button>
+          <button
+            class="btn btn-outline-danger btn-sm mx-2 mb-3"
+            style="float: right"
+            type="button"
+            routerLink="/history/sakit"
+          >
+            Kembali
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,80 @@
+<div class="container">
+  <section class="atas">
+    <h3 class="text-center" style="margin-top: 30px">Riwayat Izin Sakit</h3>
+    <hr />
+    <div class="d-flex justify-content-center" *ngIf="!tableReady">
+      <div
+        class="spinner-border text-primary"
+        style="width: 5rem; height: 5rem; margin-top: 30px"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <table *ngIf="tableReady" class="table table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Tanggal</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Keterangan</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of content">
+        <tr>
+          <td>{{ data.date | date: "yyyy-MM-dd" }}</td>
+          <td>{{ data.staffId }}</td>
+          <td>{{ data.description }}</td>
+          <td>
+            <span
+              style="font-size: 14px"
+              class="badge rounded-pill text-light"
+              [ngClass]="{
+                'bg-warning': data.accept == 'process',
+                'bg-success': data.accept == 'accepted',
+                'bg-danger': data.accept == 'rejected'
+              }"
+            >
+              {{
+                data.accept == "process"
+                  ? "Diproses"
+                  : data.accept == "accepted"
+                  ? "Disetujui"
+                  : "Ditolak"
+              }}
+            </span>
+          </td>
+          <td>
+            <button
+              *ngIf="data.accept == 'process'"
+              class="btn btn-primary btn-sm"
+              type="button"
+              routerLink="/edit/sakit/{{ data.id }}"
+            >
+              Edit
+            </button>
+            <button
+              *ngIf="data.accept != 'process'"
+              class="btn btn-primary btn-sm"
+              type="button"
+              disabled
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button
+        class="btn btn-outline-danger btn-sm mb-3"
+        type="button"
+        routerLink="/sakit"
+      >
+        Kembali
+      </button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,193 @@
+<div class="container">
+  <section class="atas">
+    <h3 class="text-center" style="margin-top: 30px">Formulir Lembur</h3>
+    <hr />
+    <p></p>
+    <div class="overtime-form">
+      <form [formGroup]="form" (ngSubmit)="saveOvertime()">
+        <!-- TANGGAL -->
+        <div class="form-group">
+          <label>Tanggal</label>
+
+          <div class="input-group mb-2">
+            <input
+              ngbDatepicker
+              #d="ngbDatepicker"
+              type="text"
+              formControlName="time"
+              placeholder="YYYY-MM-DD"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.time.errors }"
+              formControlName="time"
+            />
+            <button
+              class="btn btn-outline-primary calendar"
+              (click)="d.toggle()"
+              type="button"
+            >
+              <i class="bi bi-calendar3"></i>
+            </button>
+            <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+              <ngb-alert
+                *ngIf="f.time.errors.required"
+                [dismissible]="false"
+                type="danger"
+              >
+                <strong>Warning!</strong> Tanggal tidak boleh kosong
+              </ngb-alert>
+            </div>
+          </div>
+        </div>
+
+        <!-- WAKTU -->
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <label>Mulai</label>
+              <ngb-timepicker
+                [ngClass]="{ 'is-invalid': submitted && f.startTime.errors }"
+                formControlName="startTime"
+              ></ngb-timepicker>
+              <div
+                *ngIf="submitted && f.startTime.errors"
+                class="invalid-feedback"
+              >
+                <ngb-alert
+                  *ngIf="f.startTime.errors.required"
+                  [dismissible]="false"
+                  type="danger"
+                >
+                  <strong>Warning!</strong> Waktu tidak boleh kosong
+                </ngb-alert>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label>Akhir</label>
+              <ngb-timepicker
+                [ngClass]="{ 'is-invalid': submitted && f.endTime.errors }"
+                formControlName="endTime"
+              ></ngb-timepicker>
+              <div
+                *ngIf="submitted && f.endTime.errors"
+                class="invalid-feedback"
+              >
+                <ngb-alert
+                  *ngIf="f.endTime.errors.required"
+                  [dismissible]="false"
+                  type="danger"
+                >
+                  <strong>Warning!</strong> Waktu tidak boleh kosong
+                </ngb-alert>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PEMBERI TUGAS -->
+        <div class="form-group">
+          <label>Pemberi Tugas</label>
+          <select
+            class="form-control"
+            aria-label="Default select example"
+            [ngClass]="{ 'is-invalid': submitted && f.assigner.errors }"
+            formControlName="assigner"
+          >
+            <option *ngFor="let manager of managers" [value]="manager.id">
+              {{ manager.fullName }}
+            </option>
+          </select>
+          <div *ngIf="submitted && f.assigner.errors" class="invalid-feedback">
+            <ngb-alert
+              *ngIf="f.assigner.errors.required"
+              [dismissible]="false"
+              type="danger"
+            >
+              <strong>Warning!</strong> Pemberi tugas tidak boleh kosong
+            </ngb-alert>
+          </div>
+        </div>
+
+        <!-- ALASAN -->
+        <div class="form-group">
+          <label>Alasan</label>
+          <div
+            class="input-group"
+            style="margin-bottom: 20px"
+            formArrayName="reasons"
+            *ngFor="
+              let reason of form.get('reasons')['controls'];
+              let i = index
+            "
+          >
+            <input
+              class="form-control"
+              type="text"
+              required
+              [ngClass]="{
+                'is-invalid': submitted && f.reasons.errors
+              }"
+              [formControlName]="i"
+            />
+            <button
+              class="btn btn-outline-danger"
+              type="button"
+              id="button-addon2"
+              (click)="deleteReason(i)"
+            >
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          *ngIf="form.value.reasons.length == 0 && submitted"
+          class="alert alert-danger"
+          role="alert"
+          style="font-size: small"
+        >
+          <strong>Warning!</strong> Alasan tidak boleh kosong
+        </div>
+        <!-- TOMBOL TAMBAH ALASAN -->
+        <div class="d-flex justify-content-center">
+          <button
+            class="btn btn-outline-primary btn-sm"
+            (click)="addReason()"
+            type="button"
+            style="border-radius: 50%"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-plus-circle-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <hr />
+
+        <div class="col-12" style="margin-top: 10px">
+          <!-- SUBMIT -->
+          <button type="submit" class="btn btn-primary btn-sm mx-2 mb-3">
+            Submit
+          </button>
+          <!-- HISTORY -->
+          <button
+            *ngIf="currentUser.roles == 'staff'"
+            type="button"
+            class="btn btn-info btn-sm mb-3"
+            routerLink="/history/lembur"
+          >
+            History
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

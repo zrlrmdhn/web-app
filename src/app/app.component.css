@@ -1,0 +1,24 @@
+.logout:hover {
+  background-color: red;
+  border-radius: 20px;
+  margin-top: 8px;
+}
+
+ul {
+  font-size: medium;
+}
+
+.my-home:hover {
+  background-color: rgb(12, 100, 233);
+  border-radius: 15px;
+}
+
+.my-management:hover {
+  background-color: rgb(12, 100, 233);
+  border-radius: 15px;
+}
+
+.my-staff:hover {
+  background-color: rgb(12, 100, 233);
+  border-radius: 15px;
+}

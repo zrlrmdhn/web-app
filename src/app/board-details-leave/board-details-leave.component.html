@@ -1,0 +1,77 @@
+<div class="container" *ngFor="let data of content.data">
+  <section class="atas">
+    <div class="form-group">
+      <div class="text-center">
+        <h3 style="margin-top: 30px">Detail Cuti</h3>
+        <h5>
+          <p>{{ data.assignee }}</p>
+        </h5>
+        <p style="margin-left: 650px">{{ data.documentId }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li
+          style="font-size: 14px"
+          class="list-group-item badge rounded-pill text-light"
+          [ngClass]="{
+            'bg-warning': data.approval == 'process',
+            'bg-success': data.approval == 'approved',
+            'bg-danger': data.approval == 'rejected'
+          }"
+        >
+          {{
+            data.approval == "process"
+              ? "Sedang Diproses"
+              : data.approval == "approved"
+              ? "Disetujui"
+              : "Ditolak"
+          }}
+        </li>
+      </ul>
+
+      <dl class="row mt-3">
+        <dt class="col-sm-3">Jabatan</dt>
+        <dd class="col-sm-9">: {{ data.position }}</dd>
+        <dt class="col-sm-3">Lama Cuti</dt>
+        <dd class="col-sm-9">: {{ data.leaveDuration }} Hari</dd>
+        <dt class="col-sm-3">Tanggal</dt>
+        <dd class="col-sm-9">
+          : {{ data.startDate | date: "yyyy-MM-dd" }} <strong>s/d</strong>
+          {{ data.endDate | date: "yyyy-MM-dd" }}
+        </dd>
+        <dt class="col-sm-3">Keperluan</dt>
+        <dd class="col-sm-9">: {{ data.necessity }}</dd>
+        <hr />
+        <dt class="col-sm-3">Disetujui oleh</dt>
+        <dd class="col-sm-9">: {{ data.assigner ? data.assigner : "-" }}</dd>
+        <dt class="col-sm-3">Tanggal persetujuan</dt>
+        <dd class="col-sm-9">
+          :
+          {{ data.approvedDate | date: "yyyy-MM-dd" }}
+        </dd>
+      </dl>
+
+      <button
+        class="btn btn-success btn-sm mx-2 mb-3"
+        type="submit"
+        (click)="updateApproval('approved', data.id)"
+      >
+        Setuju
+      </button>
+      <button
+        class="btn btn-danger btn-sm mx-2 mb-3"
+        type="submit"
+        (click)="updateApproval('rejected', data.id)"
+      >
+        Tolak
+      </button>
+      <button
+        class="btn btn-outline-danger btn-sm mx-2 mb-3"
+        style="float: right"
+        type="submit"
+        routerLink="/management/cuti"
+      >
+        Kembali
+      </button>
+    </div>
+  </section>
+</div>

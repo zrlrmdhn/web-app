@@ -1,0 +1,61 @@
+<div class="container" *ngFor="let data of content.data">
+  <section class="atas">
+    <div class="form-group">
+      <div class="text-center">
+        <h3 style="margin-top: 30px">Detail Izin Sakit</h3>
+        <h5>
+          <p>{{ data.staffId }}</p>
+        </h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li
+          style="font-size: 14px"
+          class="list-group-item badge rounded-pill text-light"
+          [ngClass]="{
+            'bg-warning': data.accept == 'process',
+            'bg-success': data.accept == 'accepted',
+            'bg-danger': data.accept == 'rejected'
+          }"
+        >
+          {{
+            data.accept == "process"
+              ? "Sedang Diproses"
+              : data.accept == "accepted"
+              ? "Disetujui"
+              : "Ditolak"
+          }}
+        </li>
+      </ul>
+      <dl class="row mt-3">
+        <dt class="col-sm-3">Tanggal</dt>
+        <dd class="col-sm-9">: {{ data.date | date: "yyyy-MM-dd" }}</dd>
+        <dt class="col-sm-3">Keterangan</dt>
+        <dd class="col-sm-9">: {{ data.description }}</dd>
+        <hr />
+        <dt class="col-sm-3">Tanggal persetujuan</dt>
+        <dd class="col-sm-9">: {{ data.acceptedDate | date: "yyyy-MM-dd" }}</dd>
+        <dt class="col-sm-3">Disetujui oleh</dt>
+        <dd class="col-sm-9">: {{ data.managerId ? data.managerId : "-" }}</dd>
+        <dt class="text-center">Foto bukti</dt>
+        <center>
+          <a href="{{ data.image }}"><img src="{{ data.image }}" /></a>
+        </center>
+      </dl>
+      <button
+        class="btn btn-success btn-sm mx-2 mb-3"
+        type="submit"
+        (click)="updateApproval('accepted', data.id)"
+      >
+        Setuju
+      </button>
+      <button
+        class="btn btn-outline-danger btn-sm mx-2 mb-3"
+        style="float: right"
+        type="submit"
+        routerLink="/management/sakit"
+      >
+        Kembali
+      </button>
+    </div>
+  </section>
+</div>

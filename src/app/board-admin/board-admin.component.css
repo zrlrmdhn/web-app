@@ -1,0 +1,25 @@
+h1 {
+  max-width: 800px;
+  margin: auto;
+}
+
+strong {
+  font-size: large;
+}
+
+.my-spiner {
+  max-width: 900px;
+  margin: auto;
+}
+
+.pagination {
+  margin-top: 10px;
+}
+
+.atas {
+  padding-top: 6rem;
+}
+
+.up {
+  text-transform: uppercase;
+}

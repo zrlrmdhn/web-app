@@ -1,0 +1,35 @@
+.atas {
+  padding-top: 6rem;
+}
+
+.overtime-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+h1 {
+  max-width: 500px;
+  margin: auto;
+}
+
+hr {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.input-group-append {
+  margin-top: 10px;
+}
+
+ngb-alert {
+  font-size: small;
+}
+
+label {
+  font-size: 15px;
+}

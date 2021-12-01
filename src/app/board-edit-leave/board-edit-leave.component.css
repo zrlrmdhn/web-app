@@ -1,0 +1,20 @@
+.leave-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+h3 {
+  max-width: 500px;
+  margin: auto;
+}
+
+hr {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.atas {
+  padding-top: 6rem;
+}

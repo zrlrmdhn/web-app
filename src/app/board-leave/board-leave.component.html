@@ -1,0 +1,91 @@
+<div class="container">
+  <section class="atas">
+    <h3 class="text-center" style="margin-top: 30px">Formulir Cuti</h3>
+    <hr />
+    <form [formGroup]="form" (ngSubmit)="saveLeave()">
+      <!-- JABATAN -->
+      <label class="form-label">Jabatan</label>
+      <div class="input-group mb-2">
+        <input
+          class="form-control"
+          type="text"
+          formControlName="position"
+          [ngClass]="{ 'is-invalid': submitted && f.position.errors }"
+        />
+      </div>
+      <div
+        *ngIf="submitted && f.position.errors"
+        class="alert alert-danger"
+        role="alert"
+        style="font-size: small"
+      >
+        <strong>Warning!</strong> Jabatan tidak boleh kosong
+      </div>
+
+      <!-- TANGGAL -->
+      <label class="form-label">Tanggal</label>
+      <div class="input-group mb-2">
+        <input
+          class="form-control"
+          type="text"
+          matInput
+          ngxDaterangepickerMd
+          [locale]="{ applyLabel: 'ok', format: 'YYYY-MM-DD' }"
+          startKey="start"
+          endKey="end"
+          [(ngModel)]="selected"
+          name="daterange"
+          formControlName="date"
+          placeholder="YYYY-MM-DD - YYYY-MM-DD"
+        />
+        <span class="input-group-text" id="basic-addon1" style="color: #007bff"
+          ><i class="bi bi-calendar3"></i
+        ></span>
+      </div>
+      <!-- <div
+        *ngIf="submitted && f.selected.errors"
+        class="alert alert-danger"
+        role="alert"
+        style="font-size: small"
+      >
+        <strong>Warning!</strong> Tanggal tidak boleh kosong
+      </div> -->
+
+      <!-- KEPERLUAN -->
+      <label class="form-label">Keperluan</label>
+      <div class="input-group mb-2">
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          id="validationTextarea"
+          formControlName="necessity"
+          [ngClass]="{ 'is-invalid': submitted && f.necessity.errors }"
+        ></textarea>
+      </div>
+      <div
+        *ngIf="submitted && f.necessity.errors"
+        class="alert alert-danger"
+        role="alert"
+        style="font-size: small"
+      >
+        <strong>Warning!</strong> Keperluan tidak boleh kosong
+      </div>
+      <hr />
+
+      <!-- SUBMIT -->
+      <div class="col-12" style="margin-top: 10px">
+        <button class="btn btn-primary btn-sm mx-2 mb-3" type="submit">
+          Submit
+        </button>
+        <button
+          *ngIf="currentUser.roles == 'staff'"
+          type="button"
+          class="btn btn-info btn-sm mb-3"
+          routerLink="/history/cuti"
+        >
+          History
+        </button>
+      </div>
+    </form>
+  </section>
+</div>

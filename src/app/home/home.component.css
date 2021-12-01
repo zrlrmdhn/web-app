@@ -1,0 +1,45 @@
+/* .profile-img-card {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 10px;
+  display: block;
+  border-radius: 10px;
+}
+.container {
+  padding-top: 4rem;
+  background-color: #ffffff;
+}
+
+#galery {
+  background-color: #e2edff;
+}
+
+section {
+  padding-top: 5rem;
+} */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", sans-serif;
+}
+.w3-bar,
+h2 {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
+.fa-building,
+.fa-calendar-check-o {
+  font-size: 200px;
+}
+img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 10px;
+  display: block;
+  border-radius: 10px;
+}

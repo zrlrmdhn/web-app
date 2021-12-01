@@ -1,0 +1,85 @@
+<div class="container">
+  <section class="atas">
+    <h3 class="text-center">Riwayat Cuti</h3>
+    <hr />
+    <div class="d-flex justify-content-center" *ngIf="!tableReady">
+      <div
+        class="spinner-border text-primary"
+        style="width: 5rem; height: 5rem; margin-top: 30px"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <table *ngIf="tableReady" class="table table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Mulai tanggal</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Jabatan</th>
+          <th scope="col">Keperluan</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of content.data">
+        <tr>
+          <td>
+            {{ data.startDate | date: "yyyy-MM-dd" }} <strong>s/d</strong>
+            {{ data.endDate | date: "yyyy-MM-dd" }}
+          </td>
+          <td>{{ data.assignee }}</td>
+          <td>{{ data.position }}</td>
+          <td>{{ data.necessity }}</td>
+          <td>
+            <span
+              style="font-size: 14px"
+              class="badge rounded-pill text-light"
+              [ngClass]="{
+                'bg-warning': data.approval == 'process',
+                'bg-success': data.approval == 'approved',
+                'bg-danger': data.approval == 'rejected'
+              }"
+            >
+              {{
+                data.approval == "process"
+                  ? "Diproses"
+                  : data.approval == "approved"
+                  ? "Disetujui"
+                  : "Ditolak"
+              }}
+            </span>
+          </td>
+          <td>
+            <button
+              *ngIf="data.approval == 'process'"
+              class="btn btn-primary btn-sm"
+              type="button"
+              routerLink="/edit/cuti/{{ data.id }}"
+            >
+              Edit
+            </button>
+            <button
+              *ngIf="data.approval != 'process'"
+              class="btn btn-primary btn-sm"
+              type="button"
+              disabled
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button
+        class="btn btn-outline-danger btn-sm mb-3"
+        type="button"
+        routerLink="/cuti"
+      >
+        Kembali
+      </button>
+    </div>
+  </section>
+</div>

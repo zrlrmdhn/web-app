@@ -1,0 +1,167 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <section class="atas">
+    <div class="card" style="margin-top: 40px">
+      <img src="assets/1.png" alt="nama" style="width: 100%" />
+      <h3>{{ currentUser.fullName }}</h3>
+      <p class="title">{{ currentUser.roles }}</p>
+      <p>{{ currentUser.email }}</p>
+      <p>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+      </p>
+      <p>
+        <button class="open" (click)="open(contentpass)">Ganti Password</button>
+      </p>
+      <p>
+        <button class="open" (click)="open(contentpro)">Ganti Profile</button>
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- GANTI PASSWORD -->
+<ng-template #contentpass let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Ganti Password</h2>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="oldPassword">Password Lama</label>
+        <div class="input-group my-label">
+          <input
+            type="password"
+            class="form-control"
+            id="oldPassword"
+            name="oldPassword"
+            [(ngModel)]="oldPassword"
+          />
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <i
+                class="fa fa-eye"
+                aria-hidden="true"
+                id="eye"
+                (click)="toggle1()"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <label for="password">Password Baru</label>
+        <div class="input-group my-label">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+          />
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <i
+                class="fa fa-eye"
+                aria-hidden="true"
+                id="eye2"
+                (click)="toggle2()"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <label for="password">Ulangi Password Baru</label>
+        <div class="input-group my-label">
+          <input
+            type="password"
+            class="form-control"
+            id="againPass"
+            name="againPass"
+          />
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <i
+                class="fa fa-eye"
+                aria-hidden="true"
+                id="eye3"
+                (click)="toggle3()"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="modal.close('Save click')"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+<!-- AKHIR -->
+
+<!-- GANTI PROFILE -->
+<ng-template #contentpro let-modal>
+  <div class="modal-header">
+    <h2 class="modal-tittle" id="modal-basic-tittle">Ganti Profile</h2>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-group my-label">
+          <input
+            class="form-control"
+            type="text"
+            value="{{ currentUser.email }}"
+            aria-label="Disabled input example"
+            disabled
+            readonly
+          />
+        </div>
+        <label for="fullName">Nama Lengkap</label>
+        <div class="input-group my-label">
+          <input
+            type="text"
+            class="form-control"
+            name="fullName"
+            [(ngModel)]="currentUser.fullName"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="changeProfile()"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+<!-- AKHIR -->
+
+<ng-template #loggedOut> Please login. </ng-template>

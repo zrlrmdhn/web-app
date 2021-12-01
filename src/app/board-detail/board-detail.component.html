@@ -1,0 +1,82 @@
+<div class="container" *ngFor="let data of content.data">
+  <section class="atas">
+    <div class="form-group">
+      <div class="text-center">
+        <h3 style="margin-top: 30px">Detail Lembur</h3>
+        <h5>
+          <p>{{ data.assignee }}</p>
+        </h5>
+        <p style="margin-left: 650px">{{ data.documentId }}</p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li
+          style="font-size: 14px"
+          class="list-group-item badge rounded-pill text-light"
+          [ngClass]="{
+            'bg-warning': data.approval == 'process',
+            'bg-success': data.approval == 'approved',
+            'bg-danger': data.approval == 'rejected'
+          }"
+        >
+          {{
+            data.approval == "process"
+              ? "Sedang Diproses"
+              : data.approval == "approved"
+              ? "Disetujui"
+              : "Ditolak"
+          }}
+        </li>
+      </ul>
+
+      <dl class="row mt-3">
+        <dt class="col-sm-3">Tanggal</dt>
+        <dd class="col-sm-9">: {{ data.time | date: "yyyy-MM-dd" }}</dd>
+
+        <dt class="col-sm-3">Mulai</dt>
+        <dd class="col-sm-9">: {{ data.startTime | date: "HH:mm:ss" }}</dd>
+
+        <dt class="col-sm-3">Akhir</dt>
+        <dd class="col-sm-9">: {{ data.endTime | date: "HH:mm:ss" }}</dd>
+
+        <dt class="col-sm-3">Total waktu</dt>
+        <dd class="col-sm-9">: {{ data.totalTime }} Menit</dd>
+
+        <dt class="col-sm-3">Pemberi tugas</dt>
+        <dd class="col-sm-9">: {{ data.assigner }}</dd>
+        <hr />
+        <dt class="col-sm-3">Alasan :</dt>
+        <dd class="col-sm-9">
+          <p
+            class="text-break"
+            *ngFor="let reason of data.reasons; let i = index"
+          >
+            {{ i + 1 }}.{{ data.reasons[i] }}
+          </p>
+        </dd>
+      </dl>
+      <button
+        class="btn btn-success btn-sm mx-2 mb-3"
+        type="submit"
+        (click)="updateApproval('approved', data.id)"
+      >
+        Setuju
+      </button>
+      <button
+        class="btn btn-danger btn-sm mx-2 mb-3"
+        type="submit"
+        (click)="updateApproval('rejected', data.id)"
+      >
+        Tolak
+      </button>
+      <button
+        class="btn btn-outline-danger btn-sm mx-2 mb-3"
+        style="float: right"
+        type="submit"
+        routerLink="/management/lembur"
+      >
+        Kembali
+      </button>
+    </div>
+  </section>
+</div>

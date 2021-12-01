@@ -1,0 +1,15 @@
+hr {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.atas {
+  padding-top: 6rem;
+}

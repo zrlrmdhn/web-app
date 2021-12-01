@@ -1,0 +1,18 @@
+.form-group {
+  max-width: 750px;
+  margin: auto;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.grid {
+  font-size: 15px;
+  margin-left: 230px;
+  margin-top: 20px;
+}
+
+.atas {
+  padding-top: 6rem;
+}
