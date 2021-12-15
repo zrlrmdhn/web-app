@@ -161,7 +161,7 @@
             routerLink="profile"
             data-bs-toggle="tooltip"
             data-bs-html="true"
-            title="{{ email }}"
+            title="{{ currentUser.fullName }}"
             style="border-radius: 15px; margin-top: 5px"
           >
             <i class="bi bi-person-badge"></i>
@@ -175,7 +175,7 @@
             role="button"
             style="color: aliceblue"
             (click)="logout()"
-            ><i class="bi bi-box-arrow-in-left"></i>Logout</a
+            ><i class="bi bi-box-arrow-in-left"></i>Log Out</a
           >
         </li>
       </ul>

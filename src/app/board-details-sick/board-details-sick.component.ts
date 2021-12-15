@@ -42,7 +42,7 @@ export class BoardDetailsSickComponent implements OnInit {
           title:
             status == 'accepted'
               ? 'Data izin sakit telah disetujui'
-              : 'Data izin sakit telah ditolak',
+              : 'Data izin sakit telah disetujui',
           showConfirmButton: false,
           timer: 2000,
         });

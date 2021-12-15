@@ -13,17 +13,10 @@
           class="list-group-item badge rounded-pill text-light"
           [ngClass]="{
             'bg-warning': data.accept == 'process',
-            'bg-success': data.accept == 'accepted',
-            'bg-danger': data.accept == 'rejected'
+            'bg-success': data.accept == 'accepted'
           }"
         >
-          {{
-            data.accept == "process"
-              ? "Sedang Diproses"
-              : data.accept == "accepted"
-              ? "Disetujui"
-              : "Ditolak"
-          }}
+          {{ data.accept == "process" ? "Sedang Diproses" : "Disetujui" }}
         </li>
       </ul>
       <dl class="row mt-3">

@@ -10,3 +10,7 @@ img {
   width: 350px;
   height: auto;
 }
+
+h5 {
+  text-transform: uppercase;
+}

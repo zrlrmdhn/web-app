@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './_services/user.service';
 import { TokenStorageService } from './_services/token-storage.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   showStaffBoard = false;
   email: string;
   title: any;
+  currentUser: any;
 
   constructor(private tokenStorageService: TokenStorageService) {}
 
@@ -28,6 +30,8 @@ export class AppComponent implements OnInit {
 
       this.email = user.email;
     }
+
+    this.currentUser = this.tokenStorageService.getUser();
   }
 
   logout(): void {

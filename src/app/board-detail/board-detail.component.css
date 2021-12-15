@@ -16,3 +16,7 @@ button {
 .atas {
   padding-top: 6rem;
 }
+
+h5 {
+  text-transform: uppercase;
+}

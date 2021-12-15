@@ -43,3 +43,6 @@ img {
   display: block;
   border-radius: 10px;
 }
+a:hover {
+  color: grey;
+}
