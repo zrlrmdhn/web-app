@@ -4,6 +4,10 @@
   margin-top: 8px;
 }
 
+img {
+  border-radius: 15px;
+}
+
 ul {
   font-size: medium;
 }
