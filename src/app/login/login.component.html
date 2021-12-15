@@ -6,7 +6,7 @@
         class="text-center"
         style="font-family: 'Lucida Console', 'Courier New', monospace"
       >
-        <strong>LOG IN</strong>
+        <strong>MASUK</strong>
         <hr />
       </h1>
       <form
@@ -51,12 +51,12 @@
           role="alert"
           *ngIf="f.submitted && email.invalid"
         >
-          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.required">Email diperlukan</div>
           <div *ngIf="email.errors.email">
-            Email must be a valid email address
+            Email harus berupa alamat email yang valid
           </div>
         </div>
-        <label for="password">Password</label>
+        <label for="password">Kata Sandi</label>
         <div class="form-group input-group">
           <span
             class="input-group-text"
@@ -90,7 +90,7 @@
           role="alert"
           *ngIf="f.submitted && password.invalid"
         >
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">Kata sandi dibutuhkan</div>
         </div>
         <center>
           <p class="text-muted">
@@ -98,7 +98,7 @@
           </p>
         </center>
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Login</button>
+          <button class="btn btn-primary btn-block">Masuk</button>
         </div>
       </form>
     </div>

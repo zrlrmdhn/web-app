@@ -7,11 +7,17 @@
         ><img
           src="https://media-exp1.licdn.com/dms/image/C510BAQErcLBDLD9S5Q/company-logo_200_200/0/1556113416780?e=2159024400&v=beta&t=7c1UU-1IqPkL0gnVRuikVOCPhupdUUgUzQrA-kT1QZY"
           alt=""
-          width="25"
-          height="22"
-          class="d-inline-block align-text-top"
+          width="30"
+          height="30"
         />
-        <strong style="margin-left: 5px">GTI GROUP</strong></a
+        <strong
+          style="
+            margin-left: 5px;
+            font-family: 'Lucida Console', 'Courier New', monospace;
+            font-size: 25px;
+          "
+          >GTI GROUP</strong
+        ></a
       >
       <ul class="navbar-nav mr-auto" routerLinkActive="active">
         <li class="nav-item mx-2 my-home">
@@ -20,7 +26,7 @@
             class="nav-link active"
             routerLink="home"
             *ngIf="isLoggedIn"
-            >Home</a
+            >Beranda</a
           >
         </li>
 
@@ -32,7 +38,7 @@
             id="navbarDropdown1"
             role="button"
           >
-            Management
+            Manajemen
           </a>
           <div
             ngbDropdownMenu
@@ -69,7 +75,7 @@
             id="navbarDropdown2"
             role="button"
           >
-            Staff
+            Pegawai
           </a>
           <div
             ngbDropdownMenu
@@ -123,7 +129,7 @@
               d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
             />
           </svg>
-          Sign Up
+          Daftar
         </button>
         <button
           href="/login"
@@ -149,7 +155,7 @@
               d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
             />
           </svg>
-          Login
+          Masuk
         </button>
       </form>
 
@@ -165,7 +171,7 @@
             style="border-radius: 15px; margin-top: 5px"
           >
             <i class="bi bi-person-badge"></i>
-            Profile
+            Profil
           </button>
         </li>
         <li class="logout" style="margin-top: 5px">
@@ -175,7 +181,7 @@
             role="button"
             style="color: aliceblue"
             (click)="logout()"
-            ><i class="bi bi-box-arrow-in-left"></i>Log Out</a
+            ><i class="bi bi-box-arrow-in-left"></i>Keluar</a
           >
         </li>
       </ul>
